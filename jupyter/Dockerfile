@@ -1,4 +1,4 @@
-FROM jupyter/minimal-notebook
+FROM jupyter/minimal-notebook:02d387b31c18
 
 ADD ./requirements.txt /tmp/requirements.txt
 
