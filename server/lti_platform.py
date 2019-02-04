@@ -63,7 +63,7 @@ def oidc_authorization():
         abort(403)
     if message_hint == 'deeplink':
         id_token = content_item_launch(client_id, nonce=nonce)
-    if login_hint = 'student':
+    if login_hint == 'student':
         (context_id, resource_link_id) = message_hint.split('rlid')
         id_token = student_launch(client_id, 
                                   context_id, 
@@ -87,7 +87,7 @@ def content_item_launch(tool_id, nonce=None, redirect_uri=None):
         "data": "op=321&v=44"
     }
     return_url = "/tool/{0}/dlr".format(course.id)
-    return platform.get_tool(tool_id).message('LTIDeepLinkingRequest', course, instructor, message, return_url, nonce=nonce,mrequest_url=request.url_root)
+    return platform.get_tool(tool_id).message('LTIDeepLinkingRequest', course, instructor, message, return_url, nonce=nonce,request_url=request.url_root)
 
 @app.route("/tool/<context_id>/dlr", methods=['POST'])
 def content_item_return(context_id):
